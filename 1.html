@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - B.Tech Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: #1a1a1a;
+            --border: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(102, 126, 234, 0.1), transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(118, 75, 162, 0.1), transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            margin-bottom: 4rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            transition: width 1s ease;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Edit Mode Styles */
+        .edit-mode-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .edit-mode-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .editable {
+            position: relative;
+            outline: 2px solid transparent;
+            transition: outline 0.3s ease;
+        }
+
+        .edit-mode .editable:hover {
+            outline: 2px solid var(--accent);
+            cursor: pointer;
+        }
+
+        .edit-tooltip {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .edit-mode .editable:hover .edit-tooltip {
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--card-bg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <!-- Edit Mode Button -->
+    <button class="edit-mode-btn" onclick="toggleEditMode()">✏️ Edit Portfolio</button>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo editable" data-edit="text">Srilekha Uradi</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title editable" data-edit="text">
+                Building Tomorrow's<br>Technology Today
+            </h1>
+            <p class="hero-subtitle editable" data-edit="text">
+                B.Tech Student | Full Stack Developer | Tech Enthusiast
+            </p>
+            <p class="hero-description editable" data-edit="text">
+                Passionate about creating innovative solutions through code. Specializing in web development, machine learning, and emerging technologies.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle editable" data-edit="text">Get to know me better</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p class="editable" data-edit="text">
+                    I'm a dedicated B.Tech student with a passion for technology and innovation. Currently pursuing my degree in Computer Science, I'm constantly exploring new technologies and building projects that solve real-world problems.
+                </p>
+                <p class="editable" data-edit="text">
+                    My journey in tech started with a curiosity about how things work, and has evolved into a commitment to creating impactful solutions. I believe in continuous learning and staying updated with the latest industry trends.
+                </p>
+                <p class="editable" data-edit="text">
+                    When I'm not coding, you'll find me contributing to open-source projects, or exploring the latest developments in AI and machine learning.
+                     <p class="editable" data-edit="text">
+                Driven by a love for clean code, automation, and user-centric design, I'm eager to contribute innovative solutions to real-world challenges, blending frontend flair with robust backend logic as I pursue expertise in AI/ML and scalable deployments.
+                </p>
+            </div>
+            <div class="skills-section">
+                <h3 style="margin-bottom: 1.5rem;">Technical Skills</h3>
+                <div class="skills-grid" id="skillsGrid">
+                    <!-- Skills will be populated by JavaScript -->Driven by a love for clean code, automation, and user-centric design, I'm eager to contribute innovative solutions to real-world challenges, blending frontend flair with robust backend logic as I pursue expertise in AI/ML and scalable deployments.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle editable" data-edit="text">Check out my latest work</p>
+        
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projects will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle editable" data-edit="text">Let's work together</p>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p class="editable" data-edit="text">srilekhauradi@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p class="editable" data-edit="text">+91 99483 85949</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Location</h3>
+                        <p class="editable" data-edit="text">Hyderabad, Telangana , India</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link editable" data-edit="link" title="GitHub">
+             <span>🔗</span>
+            </a>
+            <a href="#" class="social-link editable" data-edit="link" title="LinkedIn">
+                <span>💼</span>
+            </a>
+            <a href="#" class="social-link editable" data-edit="link" title="Twitter">
+                <span>🐦</span>
+            </a>
+            <a href="#" class="social-link editable" data-edit="link" title="Email">
+                <span>✉️</span>
+            </a>
+        </div>
+        <p style="color: var(--text-secondary);">
+            © 2026 <span class="editable" data-edit="text">Your Name</span>. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Content</h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Portfolio Data Configuration
+        let portfolioData = {
+            skills: [
+                { name: 'C', level: 90 },
+                { name: 'Java', level: 90 },
+                { name: 'HTML', level: 90 },
+                { name: 'CSS', level: 90 },
+                { name: 'JavaScript', level: 75 },
+                { name: 'R', level: 75 },
+                { name: 'Python', level: 85 },
+                { name: 'React', level: 80 },
+                { name: 'Node.js', level: 75 },
+                { name: 'SQL', level: 70 },
+                { name: 'Machine Learning', level: 65 }
+
+            ],
+            projects: [
+                {
+                     title: 'Heart disease Analysis',
+                    description: 'Comprehensive cardiovascular dataset from 303 patients combining demographic & clinical data for ML predictive modeling.',
+                    tags: ['R','Python' ],
+                    github: 'https://github.com/UradiSrilekha/PowerBI--Heart-disease-Analysis-Dashboard/tree/main',
+                      demo: 'https://github.com/UradiSrilekha/PowerBI--Heart-disease-Analysis-Dashboard/blob/main/Heart%20disease%20Analysis.png',
+                    icon: '🫀🩺'
+                },
+                {
+                   title: 'LPG-Gas Leakage Detector',
+                    description: 'It is the iot based project mainly used for detecting the gas leakage by using gas sensor and the HC-05 bluetooth is used for connecting to mobile phone for receiving the message when the gas is leaked.',
+                    tags: ['C++'],
+                    github: 'https://github.com/UradiSrilekha/LPG-gas-leakage-detector',
+                    demo: 'https://github.com/UradiSrilekha/LPG-gas-leakage-detector/blob/main/project.jpg',
+                    demo:'https://github.com/UradiSrilekha/LPG-gas-leakage-detector/blob/main/mobile%20message%20alerts.jpg',
+                    icon: '🤖'
+                },
+                {
+                     title: 'Telangana-Temple-Guide',
+                    description: 'This project shows 8 famous temples in Telangana, along with their distances, maps, and nearby hotels and accommodations for visitors.',
+                    tags: ['HTML','CSS' ,'JavaScipt'],
+                    github: 'https://github.com/UradiSrilekha/Telangana-Temple-Guide',
+                      demo: 'https://github.com/UradiSrilekha/Telangana-Temple-Guide/blob/main/tour%20guide1.png',
+                      demo:'https://github.com/UradiSrilekha/Telangana-Temple-Guide/blob/main/tour%20guide%203.png',
+                    icon: '🚌'
+                },
+                {
+                    title: 'Food-Recipe',
+                    description: 'This project mainly describes about the food recipes and the ingredients used for preparing the recipes.',
+                    tags: ['HTML'],
+                    github: 'https://github.com/UradiSrilekha/odin-project',
+                      demo: 'http://127.0.0.1:5501/1.html',
+                    icon: '🥗'
+                }
+            ]
+        };
+
+        // Initialize Portfolio
+        function initPortfolio() {
+            renderSkills();
+            renderProjects();
+            loadSavedData();
+        }
+
+        // Render Skills
+        function renderSkills() {
+            const skillsGrid = document.getElementById('skillsGrid');
+            skillsGrid.innerHTML = portfolioData.skills.map((skill, index) => `
+                <div class="skill-item">
+                    <div class="skill-name editable" data-edit="skill-name" data-index="${index}">${skill.name}</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: ${skill.level}%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Projects
+        function renderProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = portfolioData.projects.map((project, index) => `
+                <div class="project-card">
+                    <div class="project-image">
+                        <span style="font-size: 5rem;">${project.icon}</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title editable" data-edit="project-title" data-index="${index}">${project.title}</h3>
+                        <p class="project-description editable" data-edit="project-desc" data-index="${index}">${project.description}</p>
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.github}" class="project-link" target="_blank">GitHub →</a>
+                            <a href="${project.demo}" class="project-link" target="_blank">Live Demo →</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Edit Mode
+        let editMode = false;
+
+        function toggleEditMode() {
+            editMode = !editMode;
+            document.body.classList.toggle('edit-mode', editMode);
+            const btn = document.querySelector('.edit-mode-btn');
+            btn.textContent = editMode ? '💾 Save Changes' : '✏️ Edit Portfolio';
+            
+            if (!editMode) {
+                saveData();
+                alert('Portfolio saved! Your changes have been stored locally.');
+            }
+        }
+
+        // Handle editable clicks
+        document.addEventListener('click', function(e) {
+            if (!editMode) return;
+            
+            const editable = e.target.closest('.editable');
+            if (!editable) return;
+            
+            const editType = editable.getAttribute('data-edit');
+            const index = editable.getAttribute('data-index');
+            
+            openEditModal(editable, editType, index);
+        });
+
+        function openEditModal(element, editType, index) {
+            const modal = document.getElementById('editModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            if (editType === 'text') {
+                modalBody.innerHTML = `
+                    <div class="form-group">
+                        <label>Edit Text</label>
+                        <textarea id="editInput" style="min-height: 100px;">${element.textContent.trim()}</textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="saveEdit('${editType}', this)">Save</button>
+                `;
+            } else if (editType === 'project-title' || editType === 'project-desc') {
+                const currentValue = element.textContent.trim();
+                modalBody.innerHTML = `
+                    <div class="form-group">
+                        <label>Edit ${editType === 'project-title' ? 'Title' : 'Description'}</label>
+                        <input type="text" id="editInput" value="${currentValue}" data-index="${index}">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveProjectEdit('${editType}', ${index})">Save</button>
+                `;
+            } else if (editType === 'skill-name') {
+                modalBody.innerHTML = `
+                    <div class="form-group">
+                        <label>Skill Name</label>
+                        <input type="text" id="skillName" value="${portfolioData.skills[index].name}">
+                    </div>
+                    <div class="form-group">
+                        <label>Skill Level (0-100)</label>
+                        <input type="number" id="skillLevel" value="${portfolioData.skills[index].level}" min="0" max="100">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveSkillEdit(${index})">Save</button>
+                `;
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').classList.remove('active');
+        }
+
+        function saveEdit(type, button) {
+            const input = document.getElementById('editInput');
+            const editables = document.querySelectorAll(`.editable[data-edit="${type}"]`);
+            
+            // Find the most recently clicked editable
+            editables.forEach(el => {
+                if (el.textContent.trim() !== input.value.trim()) {
+                    el.textContent = input.value;
+                }
+            });
+            
+            closeModal();
+        }
+
+        function saveProjectEdit(type, index) {
+            const input = document.getElementById('editInput');
+            
+            if (type === 'project-title') {
+                portfolioData.projects[index].title = input.value;
+            } else if (type === 'project-desc') {
+                portfolioData.projects[index].description = input.value;
+            }
+            
+            renderProjects();
+            closeModal();
+        }
+
+        function saveSkillEdit(index) {
+            const nameInput = document.getElementById('skillName');
+            const levelInput = document.getElementById('skillLevel');
+            
+            portfolioData.skills[index].name = nameInput.value;
+            portfolioData.skills[index].level = parseInt(levelInput.value);
+            
+            renderSkills();
+            closeModal();
+        }
+
+        // Save and Load Data
+        function saveData() {
+            // Get all text content
+            const textElements = document.querySelectorAll('.editable[data-edit="text"]');
+            const textData = {};
+            textElements.forEach((el, i) => {
+                textData[`text_${i}`] = el.textContent.trim();
+            });
+            
+            const data = {
+                text: textData,
+                skills: portfolioData.skills,
+                projects: portfolioData.projects
+            };
+            
+            localStorage.setItem('portfolioData', JSON.stringify(data));
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('portfolioData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                // Restore text content
+                const textElements = document.querySelectorAll('.editable[data-edit="text"]');
+                textElements.forEach((el, i) => {
+                    if (data.text[`text_${i}`]) {
+                        el.textContent = data.text[`text_${i}`];
+                    }
+                });
+                
+                // Restore skills and projects
+                if (data.skills) portfolioData.skills = data.skills;
+                if (data.projects) portfolioData.projects = data.projects;
+                
+                renderSkills();
+                renderProjects();
+            }
+        }
+
+        // Form Submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! (This is a demo - integrate with your backend)');
+            e.target.reset();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initPortfolio);
+
+        // Close modal on outside click
+        document.getElementById('editModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
