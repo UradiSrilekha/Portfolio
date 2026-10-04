@@ -20,8 +20,6 @@ This portfolio highlights:
 - **Database:** MongoDB  
 - **Deployment:** Vercel  
 
-## 📷 Screenshots
-_Add screenshots or demo GIFs of your portfolio here for better presentation._
 
 ## 📫 Contact
 If you’d like to connect or collaborate:
