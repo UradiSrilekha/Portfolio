@@ -25,7 +25,7 @@ _Add screenshots or demo GIFs of your portfolio here for better presentation._
 
 ## 📫 Contact
 If you’d like to connect or collaborate:
-- Email: `your-email@example.com`
+- Email: `srilekhauradi@gmail.com`
 - LinkedIn: [https://www.linkedin.com/in/uradisrilekha/](#)
 - GitHub: [https://github.com/UradiSrilekha](#)
 
